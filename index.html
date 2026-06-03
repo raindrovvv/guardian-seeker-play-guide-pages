@@ -105,6 +105,33 @@
       max-width:1120px;margin:0 auto;padding:32px 24px;
       display:flex;align-items:center;overflow-x:auto;
     }
+    .server-notice{
+      max-width:1120px;margin:0 auto;padding:0 24px 30px;
+    }
+    .server-card{
+      border:1px solid rgba(95,208,224,.22);
+      background:rgba(95,208,224,.055);
+      border-radius:8px;
+      padding:18px 20px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      align-items:start;
+    }
+    .server-kicker{
+      font-size:12px;font-weight:900;text-transform:uppercase;
+      letter-spacing:.1em;color:var(--aether);margin-bottom:7px;
+    }
+    .server-title{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:7px}
+    .server-text{font-size:16px;line-height:1.72;color:var(--muted)}
+    .server-contact{
+      display:flex;flex-direction:column;gap:7px;
+      min-width:230px;padding-left:18px;border-left:1px solid rgba(245,238,223,.12);
+    }
+    .server-contact a,.server-contact span{
+      color:var(--ink);text-decoration:none;font-size:15px;font-weight:760;
+      white-space:nowrap;
+    }
     .flow-item{flex:1;min-width:120px;text-align:center;padding:0 6px}
     .flow-box{
       background:rgba(255,255,255,.04);border:1px solid var(--line-s);
@@ -201,6 +228,15 @@
     .role-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
     .role-card{border:1px solid var(--line-s);border-radius:12px;overflow:hidden}
     .role-head{padding:18px 22px 14px;border-bottom:1px solid var(--line)}
+    .role-mark-row{display:flex;align-items:center;gap:15px;margin-bottom:13px}
+    .role-mark{
+      width:58px;height:58px;border-radius:8px;object-fit:cover;flex-shrink:0;
+      border:1px solid rgba(245,238,223,.20);
+      background:#080504;
+    }
+    .role-mark.sk{box-shadow:0 0 26px rgba(95,208,224,.13)}
+    .role-mark.gd{box-shadow:0 0 26px rgba(200,90,48,.15)}
+    .role-mark-copy{min-width:0}
     .role-tag{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
     .role-tag.sk{color:var(--aether)}
     .role-tag.gd{color:var(--ember-light)}
@@ -462,16 +498,266 @@
     .manual-shot img{max-height:820px}
     footer{border-top-color:rgba(245,238,223,.09)}
 
+    /* ── DESIGN REFINEMENT: image-led, quieter editorial UI ── */
+    :root{
+      --surface:rgba(255,255,255,.018);
+      --surface-lift:rgba(255,255,255,.034);
+      --hairline:rgba(245,238,223,.10);
+      --hairline-strong:rgba(245,238,223,.16);
+    }
+    body{
+      font-size:17px;
+      line-height:1.68;
+      background:
+        linear-gradient(180deg,#120c0a 0%,#0d0908 42%,#0a0706 100%);
+    }
+    .nav-in,.hero-content,.flow-bar,.w,.ft-in{max-width:1220px}
+    nav{
+      background:rgba(7,4,3,.78);
+      border-bottom-color:rgba(245,238,223,.08);
+      box-shadow:none;
+    }
+    .nav-in{height:44px;padding:0 28px}
+    .nav-logo{font-size:12px;color:var(--gold-light);margin-right:auto}
+    nav a{
+      font-size:12px;
+      font-weight:760;
+      color:rgba(245,238,223,.68);
+      padding:6px 9px;
+      background:transparent;
+    }
+    nav a:hover{background:rgba(245,238,223,.045)}
+    .hero{
+      min-height:82vh;
+      padding:0 28px 76px;
+      border-bottom-color:rgba(245,238,223,.08);
+    }
+    .hero::before{
+      background:
+        linear-gradient(180deg,rgba(8,5,4,.10) 0%,rgba(8,5,4,.42) 56%,#0d0908 100%),
+        linear-gradient(90deg,rgba(8,5,4,.82) 0%,rgba(8,5,4,.28) 56%,rgba(8,5,4,.70) 100%),
+        url("screenshots/seeker-draka-standoff.png") center / cover no-repeat;
+      filter:saturate(1.04) contrast(1.04);
+    }
+    .hero-content{max-width:1040px}
+    .eyebrow{font-size:11px;gap:12px;margin-bottom:22px}
+    h1{
+      font-size:clamp(52px,9vw,112px);
+      line-height:.94;
+      margin-bottom:28px;
+      text-shadow:0 22px 56px rgba(0,0,0,.46);
+    }
+    .hero-desc{
+      max-width:790px;
+      margin-bottom:34px;
+      font-size:clamp(18px,2vw,22px);
+      font-weight:760;
+      color:rgba(245,238,223,.90);
+    }
+    .hero-chips{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      max-width:940px;
+      gap:1px;
+      background:rgba(245,238,223,.10);
+      border:1px solid rgba(245,238,223,.12);
+      border-radius:8px;
+      overflow:hidden;
+    }
+    .chip{
+      min-width:0;
+      border:0;
+      border-radius:0;
+      padding:15px 18px;
+      background:rgba(9,6,5,.58);
+      backdrop-filter:blur(12px);
+    }
+    .flow-bar{
+      padding:34px 28px 26px;
+      border-bottom:1px solid rgba(245,238,223,.08);
+    }
+    .server-notice{
+      max-width:1220px;
+      padding:0 28px 32px;
+      border-bottom:1px solid rgba(245,238,223,.08);
+    }
+    .server-card{
+      background:rgba(9,6,5,.46);
+      border-color:rgba(95,208,224,.16);
+      box-shadow:none;
+    }
+    .server-kicker{letter-spacing:0}
+    .server-title{font-size:21px}
+    .server-text{color:rgba(200,184,158,.88)}
+    .server-contact a,.server-contact span{color:rgba(245,238,223,.92)}
+    .flow-box{
+      min-height:68px;
+      padding:10px 8px;
+      border:0;
+      background:transparent;
+    }
+    .flow-n{font-size:10px}
+    .flow-t{font-size:13px;color:rgba(245,238,223,.86)}
+    .flow-arr{color:rgba(200,184,158,.44)}
+    .w{padding:0 28px}
+    section{
+      position:relative;
+      padding:104px 0;
+      border-top:0;
+    }
+    section::before{
+      content:'';
+      position:absolute;
+      top:0;left:50%;
+      transform:translateX(-50%);
+      width:min(1220px,calc(100% - 56px));
+      height:1px;
+      background:rgba(245,238,223,.08);
+    }
+    .s-label{
+      font-size:11px;
+      margin-bottom:14px;
+    }
+    h2{
+      font-size:clamp(34px,4.5vw,58px);
+      font-weight:820;
+      line-height:1.10;
+      margin-bottom:20px;
+    }
+    .s-desc{
+      max-width:840px;
+      margin-bottom:46px;
+      font-size:20px;
+      line-height:1.70;
+      color:rgba(200,184,158,.90);
+    }
+    .step{grid-template-columns:58px 1fr}
+    .step:not(:last-child)::after{
+      left:17px;
+      top:46px;
+      width:1px;
+      background:linear-gradient(180deg,rgba(212,166,69,.28),rgba(245,238,223,.06));
+    }
+    .step-n{
+      width:34px;height:34px;
+      border-width:1px;
+      font-size:13px;
+      box-shadow:none;
+      margin-top:8px;
+    }
+    .step-body{padding:4px 0 58px}
+    .step-title{font-size:25px;line-height:1.34;margin-bottom:12px}
+    .step-text{font-size:18px;line-height:1.78}
+    .screen,.role-card,.ep,.req-panel,.phase,.setting,.char-item,.gameplay-card,.tab-item,.btn-row{
+      border-color:var(--hairline);
+      background:var(--surface);
+      box-shadow:none;
+    }
+    .screen,.gameplay-card,.req-panel,.char-ss{
+      background:#050302;
+      box-shadow:0 26px 72px rgba(0,0,0,.20);
+    }
+    .screen-bar{
+      padding:11px 14px;
+      font-size:13px;
+      background:rgba(255,255,255,.022);
+      color:rgba(245,238,223,.68);
+    }
+    .screen-bar::before{width:6px;height:6px}
+    .screen img,.gameplay-card img,.req-panel img,.char-ss img{
+      display:block;
+    }
+    .screen img.contain{max-height:430px}
+    .role-split,.req-grid,.editor-details,.ctrl-grid,.settings-grid,.phase-row,.manual-grid,.gameplay-grid,.ss-grid{
+      gap:20px;
+    }
+    .role-card,.ep,.req-panel,.screen,.gameplay-card,.setting,.char-item,.tab-item,.btn-row{
+      border-radius:8px;
+    }
+    .role-head{
+      padding:22px 24px 16px;
+      border-bottom-color:var(--hairline);
+    }
+    .role-mark-row{margin-bottom:15px}
+    .role-mark{
+      width:64px;height:64px;
+      border-color:rgba(245,238,223,.16);
+      box-shadow:none;
+    }
+    .role-mark.sk{border-color:rgba(95,208,224,.22)}
+    .role-mark.gd{border-color:rgba(200,90,48,.24)}
+    .role-body{padding:20px 24px 24px}
+    .role-name{font-size:28px;line-height:1.18}
+    .role-desc{font-size:17px}
+    .char-item{padding:14px}
+    .char-ico{border-radius:8px}
+    .ep{padding:22px}
+    .ep-title{font-size:14px;margin-bottom:16px;color:var(--gold-light)}
+    .ct tr{border-bottom-color:rgba(245,238,223,.075)}
+    .ct td{
+      padding:14px 16px;
+      vertical-align:top;
+    }
+    .key{
+      border-radius:999px;
+      min-height:24px;
+      padding:3px 9px;
+      background:rgba(245,238,223,.075);
+      border-color:rgba(245,238,223,.14);
+      color:rgba(245,238,223,.94);
+    }
+    .req-head{
+      background:rgba(212,166,69,.045);
+      border-bottom-color:var(--hairline);
+    }
+    .req-head-title{font-size:15px}
+    .req-head-desc{font-size:15px}
+    .phase{padding:20px 22px}
+    .phase-name{font-size:23px;line-height:1.28}
+    .gameplay-grid{margin-top:26px}
+    .gameplay-card{overflow:hidden}
+    .gameplay-card img{
+      min-height:190px;
+      aspect-ratio:16/9;
+      object-fit:cover;
+    }
+    .gameplay-caption{
+      padding:14px 16px 16px;
+      background:rgba(9,6,5,.82);
+      border-top-color:var(--hairline);
+    }
+    .gameplay-title{font-size:16px}
+    .manual-shot img{max-height:880px}
+    .settings-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .setting{
+      align-items:flex-start;
+      flex-direction:column;
+      gap:5px;
+      min-height:86px;
+      padding:16px;
+    }
+    .setting-cat{min-width:0}
+    .setting-name{font-size:17px;line-height:1.35}
+    footer{padding:52px 24px}
+    .ft-studio{color:rgba(245,238,223,.74)}
+    .ft-text{color:rgba(200,184,158,.62)}
+
     /* ── RESPONSIVE ── */
     @media(max-width:780px){
       .role-split,.req-grid,.editor-details,.ctrl-grid,.settings-grid,.phase-row,.ss-grid,.manual-grid,.gameplay-grid{grid-template-columns:1fr}
       .step{grid-template-columns:58px 1fr}
       .step-n{width:38px;height:38px;font-size:14px}
+      .hero-chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .settings-grid{grid-template-columns:1fr}
+      .role-mark{width:56px;height:56px}
+      .server-card{grid-template-columns:1fr}
+      .server-contact{border-left:0;padding-left:0;border-top:1px solid rgba(245,238,223,.12);padding-top:14px}
     }
     @media(max-width:520px){
       section{padding:52px 0}
       h2{font-size:30px}
       .hero{min-height:50vh}
+      .hero-chips{grid-template-columns:1fr}
     }
 
     /* ── A4 LANDSCAPE PDF OUTPUT ── */
@@ -489,6 +775,7 @@
         -webkit-print-color-adjust:exact;
       }
       nav,.flow-bar{display:none !important}
+      section::before{display:none}
       .hero,section{
         width:297mm;
         min-height:210mm;
@@ -592,6 +879,25 @@
       <div class="chip"><span class="chip-label">최소 인원</span><span class="chip-value">2인 멀티플레이</span></div>
       <div class="chip"><span class="chip-label">플레이 모드</span><span class="chip-value">Custom Game</span></div>
       <div class="chip"><span class="chip-label">개발 엔진</span><span class="chip-value">Unreal Engine 5</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVER NOTICE ═══ -->
+<div class="server-notice">
+  <div class="server-card">
+    <div>
+      <div class="server-kicker">Server Support</div>
+      <div class="server-title">심사용 테스트 서버 운영 안내</div>
+      <p class="server-text">
+        Guardian &amp; Seeker는 멀티플레이 기반 게임으로, 플레이를 위해 테스트 서버가 실행되어 있어야 합니다.
+        심사 기간 동안 서버는 상시 운영할 예정이나, 예기치 않은 PC 종료나 네트워크 문제로 접속이 어려울 수 있습니다.
+        접속이 되지 않거나 첫 실행 루프가 불안정한 경우 아래 연락처로 알려주시면 바로 확인하겠습니다.
+      </p>
+    </div>
+    <div class="server-contact" aria-label="테스트 서버 지원 연락처">
+      <a href="mailto:tjfwn0315@gmail.com">Email · tjfwn0315@gmail.com</a>
+      <span>Discord · blanquette_z</span>
     </div>
   </div>
 </div>
@@ -738,8 +1044,13 @@
       <!-- SEEKER -->
       <div class="role-card" style="border-color:rgba(79,197,213,.28);background:rgba(79,197,213,.03);">
         <div class="role-head" style="border-color:rgba(79,197,213,.18);">
-          <div class="role-tag sk">Seeker · 탐험가 (현재 1인 테스트)</div>
-          <div class="role-name">시 커</div>
+          <div class="role-mark-row">
+            <img class="role-mark sk" src="screenshots/role-seeker.png" alt="시커 진영 문양: 눈 모양">
+            <div class="role-mark-copy">
+              <div class="role-tag sk">Seeker · 눈 문양 · 탐험가</div>
+              <div class="role-name">시 커</div>
+            </div>
+          </div>
           <p class="role-desc">던전을 탐험해 보스룸에 도달, 가디언을 처치합니다. 3인칭 숄더 뷰 액션으로 진행합니다.</p>
         </div>
         <div class="role-body">
@@ -786,8 +1097,13 @@
       <!-- GUARDIAN -->
       <div class="role-card" style="border-color:rgba(200,90,48,.28);background:rgba(200,90,48,.03);">
         <div class="role-head" style="border-color:rgba(200,90,48,.18);">
-          <div class="role-tag gd">Guardian · 수호자 (1인 운영)</div>
-          <div class="role-name">가 디 언</div>
+          <div class="role-mark-row">
+            <img class="role-mark gd" src="screenshots/role-guardian.png" alt="가디언 진영 문양: 방패 모양">
+            <div class="role-mark-copy">
+              <div class="role-tag gd">Guardian · 방패 문양 · 수호자</div>
+              <div class="role-name">가 디 언</div>
+            </div>
+          </div>
           <p class="role-desc">직접 설계한 던전으로 시커를 막고, 최종적으로 드라카 보스로 변신해 싸웁니다.</p>
         </div>
         <div class="role-body">
@@ -859,8 +1175,12 @@
       <div class="warn" style="margin-top:12px;">
         <div class="box-icon">🔗</div>
         <div>
-          <div class="box-title">경로는 항상 연결!</div>
-          <div class="box-text">모든 방과 통로는 <strong>반드시 연결</strong>되어야 합니다. 경로가 끊기면 게임 진행이 불가능합니다.</div>
+          <div class="box-title">경로와 보스룸 입구 연결에 주의</div>
+          <div class="box-text">
+            모든 방과 통로는 <strong>반드시 연결</strong>되어야 합니다. 특히 보스룸은 입구가 트여 있는 방향과 통로가 정확히 이어지도록 배치해주세요.
+            입구가 잘 보이지 않아 막힌 벽 쪽으로 연결하면 게임 진행이 불가능할 수 있습니다.
+            추후에는 보스룸 입구 방향 표시와 함정 데미지 방향 표시를 추가해 배치 실수를 줄일 예정입니다.
+          </div>
         </div>
       </div>
     </div>
@@ -1019,8 +1339,8 @@
       <div class="ep">
         <div class="ep-title">🏰 가디언 조작 (RTS → 보스 액션)</div>
         <table class="ct">
-          <tr><td><span class="key">좌클릭</span></td><td>[RTS] 유닛 선택 및 이동 명령</td></tr>
-          <tr><td><span class="key">우클릭</span></td><td>[RTS] 선택 해제 / 취소</td></tr>
+          <tr><td><span class="key">좌클릭</span></td><td>[RTS] 유닛 선택 또는 명령 패널 위젯 클릭</td></tr>
+          <tr><td><span class="key">우클릭</span></td><td>[RTS] 선택한 유닛에게 명령. 빈 공간 클릭 시 이동, 적 유닛 클릭 시 공격합니다.</td></tr>
           <tr><td><span class="key">마우스 휠</span></td><td>[RTS] 줌 인 / 줌 아웃</td></tr>
           <tr><td><span class="key">Q</span></td><td>[RTS] 화면 이동 모드 / 명령 모드 전환. 화면 이동 모드에서는 WASD로 카메라를 움직이고, 명령 모드에서는 기존 RTS 명령 커맨드를 입력합니다.</td></tr>
           <tr><td><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></td><td>[RTS 화면 이동 모드] 카메라 이동</td></tr>
