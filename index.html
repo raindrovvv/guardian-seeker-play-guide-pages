@@ -106,7 +106,7 @@
       display:flex;align-items:center;overflow-x:auto;
     }
     .server-notice{
-      max-width:1120px;margin:0 auto;padding:0 24px 30px;
+      max-width:1120px;margin:0 auto;padding:42px 24px 34px;
     }
     .server-card{
       border:1px solid rgba(95,208,224,.22);
@@ -116,6 +116,7 @@
       display:flex;
       flex-direction:column;
       gap:14px;
+      margin:0 auto;
     }
     .server-kicker{
       font-size:12px;font-weight:900;text-transform:uppercase;
@@ -280,6 +281,22 @@
     /* ── EDITOR SECTION ── */
     .editor-overview{margin-top:22px}
     .editor-overview .screen img{max-height:460px;object-fit:cover;object-position:top}
+    .preset-guide{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;
+    }
+    .preset-copy{
+      border:1px solid var(--line);border-radius:8px;
+      background:rgba(255,255,255,.022);padding:20px;
+    }
+    .preset-copy h3{font-size:23px;line-height:1.32;color:var(--gold-light);margin-bottom:12px}
+    .preset-copy p{font-size:17px;color:var(--muted);line-height:1.76;margin-bottom:12px}
+    .preset-copy p:last-child{margin-bottom:0}
+    .preset-shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#050302}
+    .preset-shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+    .preset-caption{
+      padding:11px 14px;border-top:1px solid var(--line);
+      background:rgba(255,255,255,.028);font-size:14px;font-weight:760;color:var(--muted);
+    }
 
     .req-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
     .req-panel{border:1px solid var(--line);border-radius:8px;overflow:hidden}
@@ -581,7 +598,7 @@
     }
     .server-notice{
       max-width:1220px;
-      padding:0 28px 32px;
+      padding:54px 28px 38px;
       border-bottom:1px solid rgba(245,238,223,.08);
     }
     .server-card{
@@ -589,6 +606,7 @@
       border-color:rgba(95,208,224,.16);
       box-shadow:none;
       max-width:980px;
+      margin:0 auto;
     }
     .server-kicker{letter-spacing:0}
     .server-title{font-size:21px}
@@ -675,6 +693,13 @@
     .role-split,.req-grid,.editor-details,.ctrl-grid,.settings-grid,.phase-row,.manual-grid,.gameplay-grid,.ss-grid{
       gap:20px;
     }
+    .preset-guide{gap:20px}
+    .preset-copy,.preset-shot{
+      border-color:var(--hairline);
+      background:var(--surface);
+    }
+    .preset-copy h3{font-size:24px}
+    .preset-shot{box-shadow:0 26px 72px rgba(0,0,0,.20)}
     .role-card,.ep,.req-panel,.screen,.gameplay-card,.setting,.char-item,.tab-item,.btn-row{
       border-radius:8px;
     }
@@ -748,7 +773,7 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:780px){
-      .role-split,.req-grid,.editor-details,.ctrl-grid,.settings-grid,.phase-row,.ss-grid,.manual-grid,.gameplay-grid{grid-template-columns:1fr}
+      .role-split,.req-grid,.editor-details,.ctrl-grid,.settings-grid,.phase-row,.ss-grid,.manual-grid,.gameplay-grid,.preset-guide{grid-template-columns:1fr}
       .step{grid-template-columns:58px 1fr}
       .step-n{width:38px;height:38px;font-size:14px}
       .hero-chips{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1149,6 +1174,45 @@
     <p class="s-desc">로비에서 '던전 에디터' 버튼을 눌러 진입합니다. 한정된 <strong style="color:var(--aether)">넥타르(Nectar)</strong> 예산 안에서 방, 함정, 몬스터를 배치해 던전을 설계합니다.</p>
 
     <span class="nectar">💎 &nbsp;넥타르 초기 예산: <strong>6,000</strong> &nbsp;(오브젝트 배치 시 소모)</span>
+
+    <div class="preset-guide">
+      <div class="preset-copy">
+        <h3>프리셋 맵을 불러와 바로 플레이할 수 있습니다</h3>
+        <p>
+          가디언 플레이어는 던전 에디터에 들어간 뒤 <strong style="color:var(--gold)">불러오기</strong>를 누르면,
+          미리 세팅해둔 맵 프리셋을 불러올 수 있습니다. 직접 맵을 제작하는 과정이 번거롭거나 빠르게 심사를 진행하고 싶다면 해당 프리셋 맵을 사용해주세요.
+        </p>
+        <p>
+          현재 버전은 밸런스가 아직 조절 중이므로 몬스터나 함정을 너무 많이 배치하면 시커 플레이어가 진행하기 매우 어려울 수 있습니다.
+          처음 플레이할 때는 프리셋을 기준으로 테스트하는 것을 권장합니다.
+        </p>
+        <p>
+          프리셋 맵은 수정할 수 있으며, 수정 후 <strong style="color:var(--gold)">저장하기</strong>를 누르면 기존 맵에 덮어쓰기됩니다.
+          추후에는 프리셋 맵을 3개 정도 저장할 수 있는 슬롯 기능을 지원할 예정입니다.
+        </p>
+      </div>
+      <div class="preset-shot">
+        <img src="screenshots/dungeon-editor-02.png" alt="던전 에디터에서 불러오기 버튼으로 미리 세팅된 맵 프리셋을 불러온 화면">
+        <div class="preset-caption">불러오기 후 미리 세팅된 맵 프리셋이 배치된 상태</div>
+      </div>
+    </div>
+
+    <div class="preset-guide" style="margin-top:16px;">
+      <div class="preset-shot">
+        <img src="screenshots/dungeon-editor-01.png" alt="던전 에디터 Room 탭에서 빈 맵과 불러오기 버튼이 보이는 화면">
+        <div class="preset-caption">빈 맵 상태에서는 우측 하단 [불러오기]로 프리셋을 호출</div>
+      </div>
+      <div class="info" style="margin-top:0;">
+        <div class="box-icon">ℹ️</div>
+        <div>
+          <div class="box-title">프리셋 수정 시 저장 주의</div>
+          <div class="box-text">
+            현재는 별도 저장 슬롯이 없어 저장 시 기존 프리셋 맵에 덮어쓰기됩니다.
+            프리셋을 수정해 테스트할 수 있지만, 과도한 몬스터·함정 배치는 시커의 진행 난도를 크게 높일 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 에디터 전체 화면 -->
     <div class="screen editor-overview">
